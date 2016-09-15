@@ -1,0 +1,8 @@
+{% extends 'cefs/base.html' %}
+
+{% block content %}
+<div class="content">
+<h2 class='titler'>{{ course.title }}</h2>
+<p class='detailer'>{{ course.text | safe}}</p>
+</div>
+{% endblock %}

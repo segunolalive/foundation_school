@@ -1,0 +1,14 @@
+{% extends 'cefs/base.html' %}
+
+{% block content %}
+	<h2>Topics for this chapter include the following</h2>
+	{% for subchapter in subchapters %}
+	<div class="subchapters">
+
+	<h4><a href="{% url 'course:detail' pk=subchapter.pk %}">{{ subchapter.title }}</a></h4>
+
+	</div>
+
+	{% endfor %}
+
+{% endblock %}

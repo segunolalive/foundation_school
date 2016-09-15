@@ -1,0 +1,51 @@
+html{
+	background-color: rgb(100, 145, 251);
+}
+
+h2 a {
+color: #FCA205;
+}
+
+.themer{
+	text-align: center;
+	margin: 50px;
+}
+.classes{
+	margin: 15 auto;
+	padding: 5px;
+	width: 600px;
+	font-family: sans-serif;
+	height: 100px;
+	border: rgba(200, 200, 200, 0.3) solid;
+	border-radius: 5px;
+	box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.1);
+
+	text-align: center;
+
+}
+
+.classes a:link {
+	text-decoration: none;
+}
+
+.classes a:hover {
+	text-decoration: none;
+}
+
+.subchapters{
+	margin:0 auto;
+	width: 400px
+}
+
+.content{
+	width: 700px;
+	margin: 0 auto;
+
+}
+.titler{
+	color: blue;
+	text-align: center;
+}
+.detailer{
+	font-family: sans-serif;
+}
