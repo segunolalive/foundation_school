@@ -8,7 +8,9 @@
       <title>Foundation School</title>
       <!-- Core CSS - Include with every page -->
       <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-      <link href="{% static 'css/fs.css' %}" rel="stylesheet">
+      
+      {% block css %}
+      {% endblock %}
     </head>
     <body>
       <nav class="navbar navbar-default">

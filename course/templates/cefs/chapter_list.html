@@ -1,4 +1,9 @@
 {% extends 'cefs/base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link href="{% static 'css/fs.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 	<h1 class='themer'>Christ Embassy Foundation School</h1>

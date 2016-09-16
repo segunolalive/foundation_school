@@ -17,7 +17,7 @@ class SubChapter(models.Model):
 	chapter = models.ForeignKey(Chapter)
 	title = models.CharField(max_length=200, unique=True)
 	slug = models.SlugField(unique=True)
-	# text = models.TextField()
+
 	completed = models.BooleanField(default=False)
 
 	def __str__(self):
@@ -28,6 +28,7 @@ class SubSection(models.Model):
 	sub_chapter = models.ForeignKey(SubChapter)
 	title = models.CharField(max_length=200, unique=True)
 	slug = models.SlugField(unique=True)
+	text = models.TextField(null=True, blank=False)
 
 	completed = models.BooleanField(default=False)
 
