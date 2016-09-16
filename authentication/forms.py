@@ -21,8 +21,18 @@ class ContactForm(forms.Form):
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password. The name is in line with Django Presets"""
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    email = forms.CharField(label='Email',
+            widget=forms.EmailInput(attrs={'class': 'form-control',
+            'name': 'email'}))
+    first_name = forms.CharField(label='first_name',
+                widget=forms.TextInput(attrs={'class': 'form-control',
+                'name': 'first_name'}))
+    password1 = forms.CharField(label='Password',
+                widget=forms.PasswordInput(attrs={'class': 'form-control',
+                'name': 'password1'}))
+    password2 = forms.CharField(label='Password confirmation',
+                 widget=forms.PasswordInput(attrs={'class': 'form-control',
+                 'name': 'password2'}))
 
     class Meta:
         model = Account

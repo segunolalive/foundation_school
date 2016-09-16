@@ -1,1 +1,4 @@
-foundationnv
+foundationEnv/
+
+*.pyc
+__pycache__/

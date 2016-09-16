@@ -3,7 +3,7 @@ from .models import Chapter, SubChapter
 
 class SubChapterInline(admin.TabularInline):
 	model = SubChapter
-	
+
 
 class ChapterAdmin (admin.ModelAdmin):
 	# fieldsets = [
@@ -11,8 +11,9 @@ class ChapterAdmin (admin.ModelAdmin):
 	# ('Date Info', {'fields': ['pub_date'], 'classes': ['collapse']}),
 	# ]
 	inlines = [SubChapterInline]
-	list_display = ('heading', 'date_completed',)
-	list_filter = ['heading', 'date_completed']
+	list_display = ('title', 'date_completed',)
+	list_filter = ['title', 'date_completed']
+	prepopulated_fields = {"slug": ("title",)}
 	# search_fields = ['question_text']
 
 
