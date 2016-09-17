@@ -1,1 +1,14 @@
 {% extends 'cefs/base.html' %}
+
+{% block content %}
+
+{% for subsection in sub_sections %}
+<h2>
+  <a href="{% url 'course:detail' pk=subsection.subchapter.chapter.pk
+  slug=subsection.subchapter.slug slug2=subsection.slug %}">
+    {{ subsection.title }}
+  </a>
+</h2>
+{% endfor %}
+
+{% endblock %}
