@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Chapter, SubChapter
+from .models import Chapter, SubChapter, SubSection
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 
 def chapter_list(request):
