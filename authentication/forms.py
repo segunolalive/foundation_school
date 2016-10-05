@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, ReadOnlyPasswordHashField
 
-from .models import Account
+from .models import Account, Profile
 
 # class LoginForm(AuthenticationForm):
 class LoginForm(forms.Form):
@@ -65,9 +65,39 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ('email', 'password', 'first_name', 'is_active', 'is_admin')
+        # fields = ('first_name', 'password',)
 
     def clean_password(self):
     # Regardless of what the user provides, return the initial value.
     # This is done here, rather than on the field, because the
     # field does not have access to the initial value
         return self.initial["password"]
+
+class AccountForm(forms.ModelForm):
+    email = forms.CharField(label='Email',
+            widget=forms.EmailInput(attrs={'class': 'form-control',
+            'name': 'email', 'readonly':True}))
+    first_name = forms.CharField(label='First name',
+                widget=forms.TextInput(attrs={'class': 'form-control',
+                'name': 'first_name'}))
+    class Meta:
+        model = Account
+        fields = ('email','first_name',)
+
+
+class ProfileForm(forms.ModelForm):
+    last_name = forms.CharField(label='Last name', required=False,
+                widget=forms.TextInput(attrs={'class': 'form-control',
+                'name': 'last_name'}))
+    region = forms.CharField(label='region', required=False,
+                widget=forms.TextInput(attrs={'class': 'form-control',
+                'name': 'region'}))
+    zone = forms.CharField(label='zone', required=False,
+                widget=forms.TextInput(attrs={'class': 'form-control',
+                'name': 'zone'}))
+    church = forms.CharField(label='church', required=False,
+                widget=forms.TextInput(attrs={'class': 'form-control',
+                'name': 'church'}))
+    class Meta:
+        model = Profile
+        fields = ('image', 'last_name', 'region', 'zone', 'church',)

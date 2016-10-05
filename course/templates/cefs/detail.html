@@ -1,8 +1,39 @@
 {% extends 'cefs/base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{% endblock %}
 
 {% block content %}
+
+<nav class="theNavBar">
+	<div class="titleHeaders">
+		<p class="chapterTitle">{{ chapter.title}}</p>
+		<p class="subsectionTitle">{{ subsection.title}}</p>
+		<p class='courseTitle'>{{ course.title}}</p>
+	</div>
+
+	<a href="{% url 'course:subsection_list' pk=subsection.chapter.pk slug=subsection.slug %}">
+		<img class ="backArrow" src="{% static 'imgs/backArrow.PNG' %}">
+	</a>
+</nav>
+
 <div class="content">
-  <h2 class='titler'>{{ course.title }}</h2>
-  <p class='detailer'>{{ course.text | safe}}</p>
-</div>
+	<div class="contentContainer">
+	  <p>{{ course.text | safe}}</p>
+  	</div>
+
+  	<div class="logos">
+  		<div class="qa">
+  			<a href="#"><img src="{% static 'imgs/qa.PNG' %}"></a>
+  		</div>
+
+		<div class="greenButton">
+			<a href= "{{next_course.get_absolute_url}}">
+				<img src="{% static 'imgs/greenButton.PNG' %}">
+			</a>
+  		</div>
+	</div>
+</div>	
 {% endblock %}

@@ -1,18 +1,21 @@
 {% load staticfiles %}
+
 <html>
 <head>
 <title> CE Foundations</title>
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'css/cefs.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
 <script src="{% static 'js/respond.js' %}"></script>
-
+      {% block css %}
+      {% endblock %}
 </head>
 
 <body>
 
 {% block content %}
-{% endblock %}
 
+{% endblock %}
+<div class="copyrights">&copy; {% now "Y" %} Christ Embassy Inc</div>
 
 <!-- jquery javascript -->
 <script src="{% static 'js/jquery.min.js' %}"></script>

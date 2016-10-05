@@ -1,17 +1,34 @@
 {% extends 'cefs/base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static 'css/subchapter_list.css' %}">
+{% endblock %}
 
 {% block content %}
-	<h2>Topics for this chapter include the following</h2>
-	{% for subchapter in subchapters %}
-	<div class="subchapters">
 
-	<h4>
-		<a href="{% url 'course:subsection_list' pk=subchapter.chapter.pk slug=subchapter.slug %}">
-		{{ subchapter.title }}</a>
-	</h4>
+	<div class="theNavBar">
+		<a href="{% url 'course:chapter_list' %}">
+			<img class ="backArrow" src="{% static 'imgs/backArrow.PNG' %}">
+		</a>
 
+		<div class="titleHeader">
+			<p class='chapterTitle'>{{chapter.title}}</p>
+		</div>
 	</div>
 
+
+	<div class="content">
+	{% for subchapter in subchapters %}	
+	<a href="{% url 'course:subsection_list' pk=subchapter.chapter.pk slug=subchapter.slug %}">
+		<div class="subsectionContent">
+			<div class="section">
+				{{ subchapter.title }}
+			</div>
+		</div>
+	</a>
+
 	{% endfor %}
+	</div>
 
 {% endblock %}

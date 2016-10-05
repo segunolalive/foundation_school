@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 
 
 class Chapter(models.Model):
@@ -34,3 +35,8 @@ class SubSection(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	def get_absolute_url(self):
+		return reverse("course:detail", kwargs={"slug":self.sub_chapter.slug, "slug2":self.slug, "pk":self.sub_chapter.chapter.pk,
+		})
+

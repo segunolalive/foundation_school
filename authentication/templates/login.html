@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -23,7 +24,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-4 col-md-offset-4 col-sm-6">
       <div class="login-panel panel panel-success">
         <div class="panel-heading">
           <h3 class="panel-title">Please Sign In</h3>
@@ -32,7 +33,7 @@
           <form method="post" action="{% url 'authentication:account_login' %}">
             {% csrf_token %}
             {{form.as_p}}
-            
+
             <p>
               <input class="btn btn-success btn-sm" type="submit" value="Login"/>
               Don't have an acccount?

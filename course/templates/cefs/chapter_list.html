@@ -1,22 +1,29 @@
 {% extends 'cefs/base.html' %}
 {% load staticfiles %}
 
+
 {% block css %}
-<link href="{% static 'css/fs.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/chapter_list.css' type="text/css" %}">
 {% endblock %}
 
 {% block content %}
-	<h1 class='themer'>Christ Embassy Foundation School</h1>
 
-	{% for chapter in chapters %}
-	<div class="classes">
-		<h2>
-			<a href="{% url 'course:subchapter_list' pk=chapter.pk %}">
-				 Class {{ chapter.pk }}: {{ chapter.heading }}
-			</a>
-		</h2>
+	<div class="theNavBar">
+		<div class="titleHeader">
+			<p class='schoolTitle'>Christ Embassy Foundation School</p>
+		</div>
 	</div>
+	<div class="classContainer">
+	{% for chapter in chapters %}
+	<a href="{% url 'course:subchapter_list' pk=chapter.pk %}">
+		<div class="classes">
+			<h2>
+				 Class {{ chapter.pk }}: {{ chapter.title }}
+			</h2>
+		</div>
+	</a>
 
 	{% endfor %}
+	</div>
 
 {% endblock %}

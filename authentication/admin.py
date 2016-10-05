@@ -32,7 +32,7 @@ class UserAdmin(BaseUserAdmin):
     ),
     )
     search_fields = ('email',)
-    ordering = ('email',)
+    ordering = ('-created_at',)
     filter_horizontal = ()
 
 

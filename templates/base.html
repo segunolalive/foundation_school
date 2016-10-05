@@ -5,12 +5,12 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Foundation School</title>
       <!-- Core CSS - Include with every page -->
       <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-      
+
       {% block css %}
-      {% endblock %}
+      {% endblock css %}
+      <title>{% block title %}Foundation School{% endblock%}</title>
     </head>
     <body>
       <nav class="navbar navbar-default">
@@ -35,7 +35,7 @@
                       <a href="/">home</a>
                     </li>
                     <li>
-                      <a href="#">Profile</a>
+                      <a href="{% url 'authentication:profile_detail'%}">Profile</a>
                     </li>
                     <li>
                       <a href="{% url 'course:chapter_list' %}">Course</a>

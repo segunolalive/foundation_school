@@ -21,13 +21,14 @@ from django.contrib.auth import views as auth_views
 
 from rest_framework import routers
 
-from authentication.api.views import AccountViewSet
+from authentication.api.views import AccountViewSet, ProfileViewSet
 from authentication.forms import LoginForm
 # from course.api
 
 router = routers.DefaultRouter()
 router.register(r'accounts', AccountViewSet)
-# router.register(r'course', )
+# router.register(r'profile', ProfileViewSet)
+# router.register(r'course')
 
 
 urlpatterns = [
@@ -40,3 +41,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

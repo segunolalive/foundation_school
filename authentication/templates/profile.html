@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'authentication/css/profile.css' %}" media="screen" title="no title" charset="utf-8">
+{% endblock css %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="">
+        <div class="">
+          <img src="{{ user.profile.image_medium }}" alt="profile picture" class="" />
+        </div>
+        <h3>Email: {{ user.email }}</h3>
+        <h3>First name: {{ user.first_name }}</h3>
+        <h3>Last name: {{ user.profile.last_name }}</h3>
+        <h3>Region: {{ user.profile.region }}</h3>
+        <h3>Zone: {{ user.profile.zone }}</h3>
+        <h3>Church: {{ user.profile.church }}</h3>
+        <!-- <h3>{{ user.first_name }}</h3> -->
+      </div>
+      <div class="">
+        <a href="{% url 'authentication:update_profile'%}">Update Profile</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

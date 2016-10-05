@@ -1,0 +1,11 @@
+#profile_img {
+  display: inline-block;
+  width:300px;
+  background-color: black;
+
+}
+
+.img_div{
+  background-color: black;
+  width: 300px;
+}

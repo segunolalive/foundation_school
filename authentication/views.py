@@ -1,12 +1,15 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.utils.translation import ugettext_lazy as _
 
 
 from .admin import UserCreationForm
-from .forms import LoginForm
-from .models import Account
+from .forms import LoginForm, ProfileForm, AccountForm
+from .models import Account, Profile
+
 
 @login_required(login_url="accounts/login/")
 def home(request):
@@ -45,7 +48,6 @@ def account_login(request):
         return render(request, "login.html", context)
 
 
-
 def signup(request):
     if request.user.is_authenticated():
         return redirect("/")
@@ -76,3 +78,34 @@ def signup(request):
         "submit_btn": submit_btn
         }
         return render(request, "signup.html", context)
+
+
+# @transaction.atomic
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        user_form = AccountForm(request.POST or None, instance=request.user)
+        profile_form = ProfileForm(request.POST or None, request.FILES or None, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, _('Your profile was successfully updated!'))
+            return redirect('authentication:profile_detail')
+        else:
+            messages.error(request, _('Please correct the error below.'))
+    else:
+        user_form = AccountForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'profile_update.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
+
+def profile_detail(request):
+    user = request.user
+    profile = user.profile
+    context = {
+    "user": user,
+    "profile": profile,
+    }
+    return render(request, "profile.html", context)

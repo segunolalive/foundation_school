@@ -17,15 +17,18 @@ class ChapterAdmin(admin.ModelAdmin):
 
 
 class SubChapterAdmin(admin.ModelAdmin):
+
+	inlines = [SubSectionInline]
 	list_display = ('title','slug', 'completed',)
 	prepopulated_fields = {"slug": ("title",)}
+	list_filter = ['chapter']
 
 
-class SubSectionAdmin(admin.ModelAdmin):
-	list_display = ('title','slug', 'completed',)
-	prepopulated_fields = {"slug": ("title",)}
+# class SubSectionAdmin(admin.ModelAdmin):
+# 	list_display = ('title','slug', 'completed',)
+# 	prepopulated_fields = {"slug": ("title",)}
 
 
 admin.site.register(Chapter, ChapterAdmin)
 admin.site.register(SubChapter, SubChapterAdmin)
-admin.site.register(SubSection, SubSectionAdmin)
+# admin.site.register(SubSection, SubSectionAdmin)
