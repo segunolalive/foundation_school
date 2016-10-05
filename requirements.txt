@@ -1,3 +1,5 @@
 Django==1.10
-djangorestframework==3.0.0
-pillow==3.3.0
+pillow==3.4.1
+djangorestframework==3.4.7
+django-crispy-forms==1.6.0
+django-filter==0.14.0
